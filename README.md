@@ -1,4 +1,4 @@
-<p align="center">
+<marquee>
   <marquee behavior="scroll" direction="left" scrollamount="6">
     <b>Developer: Eneji Sunday Ugbe | CS-03 Phishing Awareness Kit</b>
   </marquee>
