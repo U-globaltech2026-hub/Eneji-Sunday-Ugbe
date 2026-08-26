@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PhishGuard CS-03 — a safe phishing awareness and simulation platform.">
+  <meta name="theme-color" content="#07111f">
+  <title>PhishGuard | CS-03 Phishing Awareness Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div><strong>PhishGuard</strong><span>CS-03 Awareness Kit</span></div>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+        <button class="nav-item" data-page="simulator">⚠ <span>Phishing Simulator</span></button>
+        <button class="nav-item" data-page="checker">⌕ <span>Link Checker</span></button>
+        <button class="nav-item" data-page="training">▣ <span>Training</span></button>
+        <button class="nav-item" data-page="quiz">✓ <span>Security Quiz</span></button>
+        <button class="nav-item" data-page="reports">◉ <span>Reports</span></button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="safe-badge"><span></span> Safe simulation mode</div>
+        <button class="theme-btn" id="themeBtn">☾ <span>Toggle theme</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div>
+          <p class="eyebrow">CYBERSECURITY AWARENESS</p>
+          <h1 id="pageTitle">Security Dashboard</h1>
+        </div>
+        <div class="top-actions">
+          <div class="status"><span></span> Training environment</div>
+          <button class="icon-btn" id="resetBtn" title="Reset demo data">↻</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="page active" id="dashboard">
+          <div class="hero">
+            <div>
+              <span class="pill">CS-03 • Phishing Awareness Kit</span>
+              <h2>Turn employees into the <em>human firewall.</em></h2>
+              <p>Safely simulate phishing, teach recognition skills, check suspicious URLs and measure security awareness — without collecting real credentials.</p>
+              <div class="hero-actions">
+                <button class="btn primary" data-go="simulator">Start simulation</button>
+                <button class="btn secondary" data-go="training">Start training</button>
+              </div>
+            </div>
+            <div class="shield-art" aria-hidden="true"><div>✓</div></div>
+          </div>
+
+          <div class="metrics">
+            <article class="metric"><div class="metric-icon red">!</div><div><span>Risk score</span><strong id="riskScore">64</strong><small>/ 100 • Moderate</small></div></article>
+            <article class="metric"><div class="metric-icon blue">↗</div><div><span>Simulation clicks</span><strong id="clickRate">0%</strong><small>Keep improving</small></div></article>
+            <article class="metric"><div class="metric-icon green">✓</div><div><span>Phishing reports</span><strong id="reportRate">0%</strong><small>Correct responses</small></div></article>
+            <article class="metric"><div class="metric-icon amber">★</div><div><span>Quiz score</span><strong id="quizScore">0%</strong><small>Knowledge level</small></div></article>
+          </div>
+
+          <div class="grid-2">
+            <article class="card">
+              <div class="card-head"><div><p class="eyebrow">ACTIVITY</p><h3>Awareness performance</h3></div><span class="tag">Last 7 activities</span></div>
+              <div class="bars" id="activityChart"></div>
+            </article>
+            <article class="card">
+              <div class="card-head"><div><p class="eyebrow">SECURITY CHECKLIST</p><h3>Protect your account</h3></div></div>
+              <div class="check-list">
+                <label><input type="checkbox" data-check="mfa"> <span><b>Enable MFA</b><small>Use multi-factor authentication on important accounts.</small></span></label>
+                <label><input type="checkbox" data-check="password"> <span><b>Use unique passwords</b><small>Never reuse your work password elsewhere.</small></span></label>
+                <label><input type="checkbox" data-check="verify"> <span><b>Verify unexpected requests</b><small>Confirm payment or credential requests through a trusted channel.</small></span></label>
+                <label><input type="checkbox" data-check="report"> <span><b>Report suspicious messages</b><small>Tell the security team instead of forwarding the threat.</small></span></label>
+              </div>
+            </article>
+          </div>
+
+          <article class="card">
+            <div class="card-head"><div><p class="eyebrow">RECENT EVENTS</p><h3>Security activity</h3></div><button class="text-btn" data-go="reports">View report →</button></div>
+            <div class="table-wrap"><table><thead><tr><th>Activity</th><th>Result</th><th>Risk</th><th>Time</th></tr></thead><tbody id="recentEvents"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="page" id="simulator">
+          <div class="section-intro"><span class="pill">Safe simulation</span><h2>Phishing Email Simulator</h2><p>Review a harmless simulated message and decide what you would do. No real credentials are requested or stored.</p></div>
+          <div class="sim-grid">
+            <article class="email-window card">
+              <div class="email-toolbar"><span>● ● ●</span><span>Simulated Mailbox</span><span>⋮</span></div>
+              <div class="email-meta"><div class="avatar">IT</div><div><b>IT Service Desk</b><small>security-alert@company-support.example</small></div><span class="email-time">Today, 09:42</span></div>
+              <div class="email-body">
+                <span class="danger-label">SIMULATION</span>
+                <h3>Urgent: Your account will be suspended today</h3>
+                <p>Hello colleague,</p>
+                <p>We detected unusual activity on your account. To prevent suspension, verify your account immediately using the secure portal below.</p>
+                <button class="fake-link" id="simLink">Verify my account</button>
+                <p class="muted">Failure to verify within 30 minutes may result in temporary access restrictions.</p>
+                <p>Thank you,<br>IT Service Desk</p>
+              </div>
+              <div class="email-actions">
+                <button class="btn danger" id="phishBtn">🚩 Report phishing</button>
+                <button class="btn secondary" id="deleteBtn">Delete</button>
+                <button class="btn secondary" id="openBtn">Open link</button>
+              </div>
+            </article>
+            <aside class="card clue-panel">
+              <p class="eyebrow">ANALYSIS</p><h3>Can you spot the red flags?</h3>
+              <div class="clue"><b>01</b><span><strong>Urgency</strong><small>Pressure to act immediately is a common social-engineering technique.</small></span></div>
+              <div class="clue"><b>02</b><span><strong>Suspicious sender</strong><small>The sender domain does not match the organization's trusted domain.</small></span></div>
+              <div class="clue"><b>03</b><span><strong>Unexpected verification</strong><small>Unsolicited login requests should be verified independently.</small></span></div>
+              <div class="clue"><b>04</b><span><strong>Threat of suspension</strong><small>Fear and consequences are used to rush decisions.</small></span></div>
+              <div class="simulation-note">💡 <b>Rule:</b> Stop → Inspect → Verify → Report.</div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="page" id="checker">
+          <div class="section-intro"><span class="pill">Heuristic analysis</span><h2>Suspicious Link Checker</h2><p>Analyze a URL for common phishing indicators. This is an awareness tool, not a malware or reputation scanner.</p></div>
+          <article class="card checker-card">
+            <label for="urlInput">Paste a suspicious link</label>
+            <div class="url-input"><input id="urlInput" type="text" placeholder="https://example.com/login"><button class="btn primary" id="checkUrl">Analyze URL</button></div>
+            <div class="example-links"><button data-url="https://secure-account-verify.example/login">Suspicious example</button><button data-url="https://www.microsoft.com/">Safe-looking example</button></div>
+            <div id="urlResult" class="url-result hidden"></div>
+          </article>
+          <div class="info-grid">
+            <article class="card"><span class="big-icon">🔐</span><h3>HTTPS</h3><p>Encryption helps protect traffic, but HTTPS alone does not prove a website is legitimate.</p></article>
+            <article class="card"><span class="big-icon">🌐</span><h3>Domain</h3><p>Check the actual registered domain. Look for misspellings, strange subdomains and look-alike names.</p></article>
+            <article class="card"><span class="big-icon">⚠</span><h3>Pressure</h3><p>Urgent requests for passwords, payments or verification deserve independent confirmation.</p></article>
+          </div>
+        </section>
+
+        <section class="page" id="training">
+          <div class="section-intro"><span class="pill">Micro-learning</span><h2>Security Training</h2><p>Complete short modules designed around the mistakes employees make most often.</p></div>
+          <div class="training-grid" id="trainingGrid"></div>
+        </section>
+
+        <section class="page" id="quiz">
+          <div class="section-intro"><span class="pill">Knowledge check</span><h2>Phishing Awareness Quiz</h2><p>Answer the questions and receive a score. Your result is stored only in this browser for this demo.</p></div>
+          <article class="card quiz-card">
+            <div id="quizBox"></div>
+          </article>
+        </section>
+
+        <section class="page" id="reports">
+          <div class="section-intro"><span class="pill">Local demo analytics</span><h2>Security Reports</h2><p>Use these metrics to demonstrate how an organization could measure awareness improvement.</p></div>
+          <div class="report-grid">
+            <article class="card report-big"><span>Awareness score</span><strong id="awarenessScore">36%</strong><div class="progress"><i id="awarenessBar"></i></div><small>Based on simulator, training and quiz activity.</small></article>
+            <article class="card report-big"><span>Simulated risk</span><strong id="simRisk">64</strong><div class="risk-meter"><i id="riskBar"></i></div><small>Lower is better.</small></article>
+          </div>
+          <article class="card">
+            <div class="card-head"><div><p class="eyebrow">AUDIT LOG</p><h3>Demo activity</h3></div><button class="text-btn" id="exportBtn">Export CSV</button></div>
+            <div class="table-wrap"><table><thead><tr><th>Timestamp</th><th>Event</th><th>Outcome</th><th>Score</th></tr></thead><tbody id="auditLog"></tbody></table></div>
+          </article>
+        </section>
+      </div>
+      <footer>PhishGuard CS-03 • Educational simulation • No real credentials collected • Static GitHub Pages compatible</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div class="modal hidden" id="modal"><div class="modal-box"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
