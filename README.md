@@ -1,3 +1,9 @@
+<p align="center">
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    <b>Developer: Eneji Sunday Ugbe | CS-03 Phishing Awareness Kit</b>
+  </marquee>
+</p>
+
 # PhishGuard CS-03 — Phishing Awareness Kit
 
 A professional, static GitHub Pages demo for CS-03: Phishing Awareness Kit — Staff Fall for Phishing.
